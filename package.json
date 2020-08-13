@@ -1,0 +1,9 @@
+{
+  "name": "dexlily",
+  "description": "Meccha simply IndexedDB library",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Cano <contact.sasasaky@gmail.com>",
+  "repository": "git@github.com:canoypa/dexlily.git",
+  "main": "index.js"
+}
