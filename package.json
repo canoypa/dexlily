@@ -5,9 +5,9 @@
   "license": "MIT",
   "author": "Cano <contact.sasasaky@gmail.com>",
   "repository": "git@github.com:canoypa/dexlily.git",
-  "main": "/dist/cjs/index.js",
-  "module": "/dist/es/index.js",
-  "types": "/dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "/dist/**/*"
   ],
