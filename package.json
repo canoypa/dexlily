@@ -14,6 +14,11 @@
   "keywords": [
     "IndexedDB"
   ],
+  "scripts": {
+    "build": "yarn build:rollup && yarn build:types",
+    "build:rollup": "rollup -c",
+    "build:types": "tsc --declaration --emitDeclarationOnly"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@rollup/plugin-babel": "^5.2.0",
