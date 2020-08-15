@@ -3,7 +3,7 @@ import { Store } from "./store";
 import { DBReq } from "./types";
 
 export class Dexlily {
-  req: DBReq;
+  private req: DBReq;
 
   constructor(
     public name: string,
