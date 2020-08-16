@@ -18,6 +18,6 @@ export class Dexlily {
   }
 
   destroy() {
-    indexedDB.deleteDatabase(name);
+    indexedDB.deleteDatabase(this.name);
   }
 }
