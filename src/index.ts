@@ -1,6 +1,9 @@
 import { openIDB } from "./open-idb";
 import { Store } from "./store";
 import { DBReq } from "./types";
+import { UpgradeDataBase } from "./upgrade-db";
+
+export type UpgradeFn = (db: UpgradeDataBase) => void;
 
 export class Dexlily {
   private req: DBReq;
@@ -8,9 +11,9 @@ export class Dexlily {
   constructor(
     public name: string,
     public version: number,
-    upgrade: () => void
+    upgradeFn: UpgradeFn
   ) {
-    this.req = openIDB(name, version, upgrade);
+    this.req = openIDB(name, version, upgradeFn);
   }
 
   store(storeName: string) {
