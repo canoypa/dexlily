@@ -1,23 +1,26 @@
 import { openIDB } from "./open-idb";
 import { Store } from "./store";
-import { DBReq } from "./types";
 import { UpgradeDataBase } from "./upgrade-db";
 
 export type UpgradeFn = (db: UpgradeDataBase) => void;
 
 export class Dexlily {
-  private req: DBReq;
+  private currentIDBRequest: IDBDatabase | null = null;
 
   constructor(
     public name: string,
     public version: number,
-    upgradeFn: UpgradeFn
-  ) {
-    this.req = openIDB(name, version, upgradeFn);
-  }
+    private upgradeFn: UpgradeFn
+  ) {}
 
-  store(storeName: string) {
-    return new Store(this.req, storeName);
+  private getCurrentIDBRequest = async () => {
+    if (this.currentIDBRequest !== null) return this.currentIDBRequest;
+    return await openIDB(this.name, this.version, this.upgradeFn);
+  };
+
+  async store(storeName: string) {
+    const req = await this.getCurrentIDBRequest();
+    return new Store(req, storeName);
   }
 
   destroy() {

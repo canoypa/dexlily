@@ -1,11 +1,8 @@
-import { DBReq } from "./types";
-
 export class Store {
-  constructor(private req: DBReq, private storeName: string) {}
+  constructor(private db: IDBDatabase, private storeName: string) {}
 
   private async getStore(mode: IDBTransactionMode = "readonly") {
-    const db = await this.req;
-    const trans = db.transaction(this.storeName, mode);
+    const trans = this.db.transaction(this.storeName, mode);
     const store = trans.objectStore(this.storeName);
     return store;
   }
