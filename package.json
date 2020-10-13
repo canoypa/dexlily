@@ -17,7 +17,7 @@
   "scripts": {
     "build": "yarn build:rollup && yarn build:types",
     "build:rollup": "rollup -c",
-    "build:types": "tsc --declaration --emitDeclarationOnly"
+    "build:types": "tsc"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
