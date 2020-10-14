@@ -5,7 +5,7 @@ import { UpgradeDataBase } from "./upgrade-db";
 export type UpgradeFn = (db: UpgradeDataBase) => void;
 
 export class Dexlily {
-  private currentIDBRequest: IDBDatabase | null = null;
+  private currentIDBDatabase: IDBDatabase | null = null;
 
   constructor(
     public name: string,
@@ -14,7 +14,7 @@ export class Dexlily {
   ) {}
 
   private getCurrentIDBRequest = async () => {
-    if (this.currentIDBRequest !== null) return this.currentIDBRequest;
+    if (this.currentIDBDatabase !== null) return this.currentIDBDatabase;
     return await openIDB(this.name, this.version, this.upgradeFn);
   };
 
