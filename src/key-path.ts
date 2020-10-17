@@ -1,7 +1,7 @@
 import { KeyPath } from "./types";
 
 type keyPathCreator = {
-  <T extends string>(name: T, path?: undefined): KeyPath<T, T>;
+  <T extends string>(name: T): KeyPath<T, T>;
   <N extends string, T extends string>(name: N, path: T): KeyPath<N, T>;
 };
 
